@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <iframe src="https://y8.com/embed/slope" scrolling="no" style="width: 960px; height: 641px; border: 0; margin: 0; padding: 0;"> </iframe>​ -->
+    <script>
+        (function() {
+            const pop_out = window.open('', 'just doing homework', 'width=500,height=400');
+            pop_out.onload = () => {
+                const game = document.createElement("iframe");
+                game.src = "https://y8.com/embed/slope";
+                game.width = "5000";
+                game.height = "5000";
+                pop_out.document.body.appendChild(game);
+                
+                const overlay = document.createElement("div");
+                Object.assign(overlay.style, {
+                    position: "fixed",
+                    inset: '0',
+                    zIndex: '1000',
+                    mixBlendMode: 'hue',
+                    pointerEvents: 'none',
+                    transition: '10s linear all'
+                });
+                
+                let i = 0;
+                setInterval(() => overlay.style.background = `hsl(${i++ * 50}deg, 100%, 50%)`, 10000);
+                
+                pop_out.document.body.appendChild(overlay);
+            }
+        })();
+    </script>
+</body>
+</html>
